@@ -12,9 +12,12 @@ interface swp52
 !
 router bgp {{variables[ansible_hostname]["bgp"].asn}}
  bgp router-id {{variables[ansible_hostname]["interfaces"]["lo"].ipv4|replace("/32", "")}}
- network {{variables[ansible_hostname]["interfaces"]["lo"].ipv4}}
  neighbor swp51 interface remote-as external
  neighbor swp52 interface remote-as external
+ !
+ address-family ipv4 unicast
+  network {{variables[ansible_hostname]["interfaces"]["lo"].ipv4}}
+ exit-address-family
 !
 line vty
 !
