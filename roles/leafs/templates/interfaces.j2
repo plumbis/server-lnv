@@ -1,4 +1,6 @@
-auto lo
+{{ansible_hostname}}
+
+{# auto lo
 iface lo inet loopback
     address {{ansible_hostname[interfaces]."lo".ipv4}}
 
@@ -18,3 +20,4 @@ iface swp1
 
 auto swp2
 iface swp2
+ #}
