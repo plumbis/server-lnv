@@ -1,14 +1,8 @@
 ---
 - hosts: spines
   become: yes
-  tasks:
-    - name: Copy /etc/network/interfaces
-      template: src=roles/spines/templates/interfaces.j2 dest=/etc/network/interfaces
-    #   notify: reload networking
-
-    # - name: Copy Quagga Configuration
-    #   template: src=roles/spines/templates/Quagga.conf.j2 dest=/etc/quagga/Quagga.conf
-    #   notify: reload quagga
+  roles:
+    - spines
 
   handlers:
     - include: handlers/main.yml
@@ -16,14 +10,8 @@
 
 - hosts: leafs
   become: yes
-  tasks:
-    - name: Copy /etc/network/interfaces
-      template: src=roles/leafs/templates/interfaces.j2 dest=/etc/network/interfaces
-    #   notify: reload networking
-
-    # - name: Copy Quagga Configuration
-    #   template: src=roles/leafs/templates/Quagga.conf.j2 dest=/etc/quagga/Quagga.conf
-    #   notify: reload quagga
+  roles:
+    - leafs
 
   handlers:
     - include: handlers/main.yml
