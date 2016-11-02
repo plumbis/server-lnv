@@ -1,0 +1,16 @@
+---
+spine01:
+  bgp:
+    asn: 65535
+
+  interfaces:
+    lo:
+      ipv4: "10.0.0.21/32"
+
+spine02:
+  bgp:
+    asn: 65535
+
+  interfaces:
+    lo:
+      ipv4: "10.0.0.22/32"

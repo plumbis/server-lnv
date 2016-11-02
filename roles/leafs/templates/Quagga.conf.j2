@@ -1,0 +1,18 @@
+username cumulus nopassword
+!
+log file /var/log/quagga/quagga.log
+!
+interface lo
+!
+interface swp51
+!
+interface swp52
+!
+router bgp {{ansible_hostname[bgp].asn}}
+ bgp router-id {{ansible_hostname[interfaces]."lo".ipv4|replace("/32", "")}}
+ network {{ansible_hostname[interfaces]."lo".ipv4}}
+ neighbor swp51 remote-as external
+ neighbor swp52 remote-as external
+!
+line vty
+!

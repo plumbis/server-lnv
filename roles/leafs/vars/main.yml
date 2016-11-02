@@ -1,0 +1,32 @@
+---
+leaf01:
+  bgp:
+    asn: 64601
+
+  interfaces:
+    lo:
+      ipv4: "10.0.0.11/32"
+
+leaf02:
+  bgp:
+    asn: 64602
+
+  interfaces:
+    lo:
+      ipv4: "10.0.0.12/32"
+
+leaf03:
+  bgp:
+    asn: 64603
+
+  interfaces:
+    lo:
+      ipv4: "10.0.0.13/32"
+
+leaf04:
+  bgp:
+    asn: 64604
+
+  interfaces:
+    lo:
+      ipv4: "10.0.0.14/32"

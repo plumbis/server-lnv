@@ -1,0 +1,26 @@
+auto lo
+iface lo inet loopback
+    address {{ansible_hostname[interfaces]."lo".ipv4}}
+
+auto eth0
+iface eth0 inet dhcp
+
+# uplinks
+auto swp1
+iface swp1
+
+auto swp2
+iface swp2
+
+auto swp3
+iface swp3
+
+auto swp4
+iface swp4
+
+auto swp29
+iface swp29
+
+auto swp30
+iface swp30
+
