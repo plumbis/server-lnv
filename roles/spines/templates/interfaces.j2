@@ -1,9 +1,9 @@
-{{ansible_hostname}}
+### Configured by Ansible
+###
 
-
-{# auto lo
+auto lo
 iface lo inet loopback
-    address {{ansible_hostname[interfaces]["lo"].ipv4}}
+    address {{ansible_hostname["interfaces"]["lo"].ipv4}}
 
 auto eth0
 iface eth0 inet dhcp
@@ -25,5 +25,5 @@ auto swp29
 iface swp29
 
 auto swp30
-iface swp30 #}
+iface swp30
 
