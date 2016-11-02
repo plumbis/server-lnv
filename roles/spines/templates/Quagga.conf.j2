@@ -17,8 +17,8 @@ interface swp29
 interface swp30
 !
 router bgp {{ansible_hostname[bgp].asn}}
- bgp router-id {{ansible_hostname[interfaces]["lo"]ipv4|replace("/32", "")}}
- network {{ansible_hostname[interfaces]["lo"]ipv4}}
+ bgp router-id {{ansible_hostname[interfaces]["lo"].ipv4|replace("/32", "")}}
+ network {{ansible_hostname[interfaces]["lo"].ipv4}}
  neighbor swp1 remote-as external
  neighbor swp2 remote-as external
  neighbor swp3 remote-as external
