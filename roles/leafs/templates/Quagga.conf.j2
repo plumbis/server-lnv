@@ -10,9 +10,9 @@ interface swp52
  ipv6 nd ra-interval 10
  no ipv6 nd suppress-ra
 !
-router bgp {{ansible_hostname[bgp].asn}}
- bgp router-id {{ansible_hostname[interfaces]."lo".ipv4|replace("/32", "")}}
- network {{ansible_hostname[interfaces]."lo".ipv4}}
+router bgp {{variables[ansible_hostname]["bgp"].asn}}
+ bgp router-id {{variables[ansible_hostname]["interfaces"]["lo"].ipv4|replace("/32", "")}}
+ network {{variables[ansible_hostname]["interfaces"]["lo"].ipv4}}
  neighbor swp51 interface remote-as external
  neighbor swp52 interface remote-as external
 !
