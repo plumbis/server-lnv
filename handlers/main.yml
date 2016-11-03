@@ -12,9 +12,6 @@
     name: quagga
     state: reloaded
 
-- name: reboot
-  shell: "shutdown -r 0 now"
-
 - name: reload sysctl files
   command: 'sysctl --system'
 
@@ -29,3 +26,6 @@
     name: vxsnd
     enabled: true
     state: started
+
+- name: reboot
+  shell: "shutdown -r 0 now"
