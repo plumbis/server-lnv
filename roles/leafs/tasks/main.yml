@@ -11,6 +11,10 @@
     dest: /etc/network/interfaces
   notify: reload networking
 
+# This will always be marked as changed by Ansible.
+# It was easier to set a network statement for the br0 interface
+# By just inserting the IP instead of the proper network address
+# Quagga changes this to the network and saves, creating a change
 - name: Copy Quagga Configuration
   template:
     src: Quagga.conf.j2
