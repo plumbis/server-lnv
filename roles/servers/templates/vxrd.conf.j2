@@ -35,7 +35,7 @@ svcnode_ip = 10.255.255.254
 #holdtime = 90
 
 # Local IP address to bind to for receiving control traffic from the snd
-src_ip = {{variables[ansible_hostname]["interfaces"]["lo"].ipv4|replace("/32", "")}}
+src_ip = {{variables[ansible_hostname]["interfaces"]["uplinkbond"].ipv4}}
 
 [vxrd]
 # Seconds to wait before inspecting the HREP entries
