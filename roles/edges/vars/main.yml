@@ -1,45 +1,10 @@
 ---
 variables:
-  leaf01:
+  edge01:
     bgp:
       asn: 64601
 
     interfaces:
       lo:
         ipv4: "10.0.0.11/32"
-      br0:
-        ipv4: "10.1.1.11/24"
-        gateway: "10.1.1.1"
 
-  leaf02:
-    bgp:
-      asn: 64602
-
-    interfaces:
-      lo:
-        ipv4: "10.0.0.12/32"
-      br0:
-        ipv4: "10.1.1.12/24"
-        gateway: "10.1.1.1"
-
-  leaf03:
-    bgp:
-      asn: 64603
-
-    interfaces:
-      lo:
-        ipv4: "10.0.0.13/32"
-      br0:
-        ipv4: "10.2.2.13/24"
-        gateway: "10.2.2.1"
-
-  leaf04:
-    bgp:
-      asn: 64604
-
-    interfaces:
-      lo:
-        ipv4: "10.0.0.14/32"
-      br0:
-        ipv4: "10.2.2.14/24"
-        gateway: "10.2.2.1"
