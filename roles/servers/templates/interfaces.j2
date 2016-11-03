@@ -13,12 +13,12 @@ auto eth2
 iface eth2 inet manual
  bond-master bond0
 
-auto bond0
-iface bond0 inet static
+auto uplinkbond
+iface uplinkbond inet static
  bond-slaves none
  bond-mode active-backup
  bond-min-links 1
  bond-xmit-hash-policy layer3+4
- address {{variables[ansible_hostname]["interfaces"]["bond0"].ipv4}}
- post-up ip route add 172.16.0.0/16 via {{variables[ansible_hostname]["interfaces"]["bond0"].gateway}}
- post-up ip route add 10.0.0.0/8 via {{variables[ansible_hostname]["interfaces"]["bond0"].gateway}}
+ address {{variables[ansible_hostname]["interfaces"]["uplinkbond"].ipv4}}
+ post-up ip route add 172.16.0.0/16 via {{variables[ansible_hostname]["interfaces"]["uplinkbond"].gateway}}
+ post-up ip route add 10.0.0.0/8 via {{variables[ansible_hostname]["interfaces"]["uplinkbond"].gateway}}

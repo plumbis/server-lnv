@@ -25,9 +25,15 @@ iface swp50
 # bridge to hosts
 auto swp1
 iface swp1
+ bridge-access 1
+ mstpctl-portadminedge yes
+ mstpctl-bpduguard yes
 
 auto swp2
 iface swp2
+ bridge-access 1
+ mstpctl-portadminedge yes
+ mstpctl-bpduguard yes
 
 auto bond0
 iface bond0
@@ -36,9 +42,11 @@ iface bond0
 auto br0
 iface br0
  bridge-vlan-aware yes
- address {{variables[ansible_hostname]["interfaces"]["br0"].ipv4}}
  bridge-ports swp1 swp2 bond0
  bridge-pvid 1
- mstpctl-bpduguard swp1=yes swp2=yes
+
+auto br0.1
+iface br0.1
+ address {{variables[ansible_hostname]["interfaces"]["br0"].ipv4}}
  address-virtual 00:00:5e:00:01:01 {{variables[ansible_hostname]["interfaces"]["br0"].gateway}}
 
