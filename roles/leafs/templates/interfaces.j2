@@ -24,7 +24,7 @@ iface swp2
 
 auto br0
 iface br0
- bridge-vlan aware yes
+ bridge-vlan-aware yes
  address {{variables[ansible_hostname]["interfaces"]["br0"].ipv4}}
  bridge-ports swp1 swp2
  bridge-pvid 1
