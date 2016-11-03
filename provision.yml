@@ -38,7 +38,8 @@
 - hosts: edges
   become: yes
   roles:
-    - edges
+    - edges/quagga.yml
+    - edges/vxlan.yml
 
   handlers:
     - include: handlers/main.yml
