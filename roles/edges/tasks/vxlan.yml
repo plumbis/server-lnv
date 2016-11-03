@@ -1,0 +1,19 @@
+---
+# add cumulus pubkey
+- name: add cumulus packaging key
+  apt_key:
+    keyserver: p80.pool.sks-keyservers.net
+    id: DFEFCFBC5A1A622FEFCA76497EB364B4A88BBC95
+
+# add cumulus repo
+- name: install cumulus repo
+  copy:
+    src: cumulus.list
+    dest: /etc/apt/sources.list.d/cumulus.list
+  register: update_cache
+
+# update apt cache
+- name: update apt cache
+  apt:
+    update_cache: yes
+  when: update_cache.changed
