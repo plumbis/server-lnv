@@ -17,3 +17,13 @@
   apt:
     update_cache: yes
   when: update_cache.changed
+
+- name: Install LNV package
+  apt:
+    name: python-vxfld
+
+- name: configure lnv agent
+  template:
+    src: vxrd.conf.j2
+    dest: /etc/vxrd.conf
+  notify: restart vxrd

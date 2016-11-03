@@ -17,3 +17,15 @@
 
 - name: reload sysctl files
   command: 'sysctl --system'
+
+- name: restart vxrd
+  service:
+    name: vxrd
+    enabled: true
+    state: started
+
+- name: restart vxsnd
+  service:
+    name: vxsnd
+    enabled: true
+    state: started

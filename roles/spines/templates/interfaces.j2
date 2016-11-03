@@ -4,6 +4,7 @@
 auto lo
 iface lo inet loopback
     address {{variables[ansible_hostname]["interfaces"]["lo"].ipv4}}
+    address 10.255.255.254/32
 
 auto eth0
 iface eth0 inet dhcp

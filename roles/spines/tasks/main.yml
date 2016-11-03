@@ -16,3 +16,9 @@
     src: Quagga.conf.j2
     dest: /etc/quagga/Quagga.conf
   notify: reload quagga
+
+- name: Copy Vxsnd config
+  template:
+    src: vxsnd.conf.j2
+    dest: /etc/vxsnd.conf
+  notify: restart vxsnd

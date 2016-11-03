@@ -35,6 +35,7 @@ router bgp {{variables[ansible_hostname]["bgp"].asn}}
  neighbor swp30 interface remote-as external
  !
  address-family ipv4 unicast
+  network 10.255.255.254/32
   network {{variables[ansible_hostname]["interfaces"]["lo"].ipv4}}
  exit-address-family
 !
