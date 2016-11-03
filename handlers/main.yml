@@ -29,4 +29,4 @@
 
 - name: reboot
   shell: "shutdown -r 0 now"
-  ignore_errors: true
+  poll: 0
