@@ -16,7 +16,7 @@ Quickstart
 * vagrant ssh oob-mgmt-server
 * sudo su - cumulus
 * git clone https://github.com/plumbis/server-lnv.git
-* cd cldemo-pim
+* cd server-lnv
 * ansible-playbook provision.yml
 
 Details
