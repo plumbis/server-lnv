@@ -40,7 +40,7 @@ src_ip = {{variables[ansible_hostname]["interfaces"]["lo"].ipv4|replace("/32", "
 
 [vxsnd]
 # Space separated list of IP addresses of vxsnd to share state with
-svcnode_peers = {% for host in variables %}{{variables[host]["interfaces"]["lo"].ipv4|replace("/32", "")}}{%endfor%}
+svcnode_peers = {% for host in variables %}{{variables[host]["interfaces"]["lo"].ipv4|replace("/32", "")}} {%endfor%}
 
 
 # When set to true, the service node will listen for vxlan data traffic
