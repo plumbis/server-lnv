@@ -8,10 +8,14 @@ iface eth0 inet dhcp
 auto eth1
 iface eth1 inet manual
  bond-master bond0
+ #set bond slave to promisc due to vbox issues
+ post-up ip link set promisc on dev eth1
 
 auto eth2
 iface eth2 inet manual
  bond-master bond0
+ #set bond slave to promisc due to vbox issues
+ post-up ip link set promisc on dev eth2
 
 auto uplinkbond
 iface uplinkbond inet static

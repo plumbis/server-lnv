@@ -18,9 +18,13 @@ iface swp52
 # crosslinks
 auto swp49
 iface swp49
+ #set bond slave to promisc due to vbox issues
+ post-up ip link set promisc on dev swp49
 
 auto swp50
 iface swp50
+ #set bond slave to promisc due to vbox issues
+ post-up ip link set promisc on dev swp50
 
 # bridge to hosts
 auto swp1
