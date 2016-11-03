@@ -3,6 +3,46 @@
   template:
     src: interfaces.j2
     dest: /etc/network/interfaces
-  notify: reboot
+  register: reboot
 
-- include: vxlan.yml
+#ipaddr package is required for vxrd service
+- name: Install ipaddr
+  apt:
+    name: python-ipaddr
+    state: present
+
+# add cumulus pubkey
+- name: add cumulus packaging key
+  apt_key:
+    keyserver: p80.pool.sks-keyservers.net
+    id: DFEFCFBC5A1A622FEFCA76497EB364B4A88BBC95
+
+# add cumulus repo
+- name: install cumulus repo
+  copy:
+    src: cumulus.list
+    dest: /etc/apt/sources.list.d/cumulus.list
+  register: update_cache
+
+# update apt cache
+- name: update apt cache
+  apt:
+    update_cache: yes
+  when: update_cache.changed
+
+- name: Install LNV package
+  apt:
+    name: python-vxfld
+
+- name: configure lnv agent
+  template:
+    src: vxrd.conf.j2
+    dest: /etc/vxrd.conf
+  notify: restart vxrd
+
+- meta: flush_handlers
+
+- name: reboot
+  shell: "shutdown -r 0 now"
+  poll: 0
+  when: reboot.changed

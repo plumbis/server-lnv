@@ -27,6 +27,3 @@
     enabled: true
     state: started
 
-- name: reboot
-  shell: "shutdown -r 0 now"
-  poll: 0
