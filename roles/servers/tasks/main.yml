@@ -45,4 +45,6 @@
 - name: reboot
   shell: "shutdown -r 0 now"
   poll: 0
+  async: 0
   when: reboot.changed
+  ignore_errors: yes
