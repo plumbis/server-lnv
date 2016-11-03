@@ -7,4 +7,3 @@ variables:
     interfaces:
       lo:
         ipv4: "10.0.0.11/32"
-

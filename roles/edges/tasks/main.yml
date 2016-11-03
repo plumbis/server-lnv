@@ -21,18 +21,18 @@
     dest: /etc/network/interfaces
   notify: reboot
 
-- name: write sysctl files so quagga works correctly on hosts
-  copy:
-    src: 99cumulus_defaults
-    dest: /etc/sysctl.d/99cumulus_defaults.conf
-  notify: reload sysctl files
-
 - name: Install iproute for Quagga dependency
   apt:
     name: iproute
     update_cache: yes
     state: present
     cache_valid_time: 86400
+
+- name: write sysctl files so quagga works correctly on hosts
+  copy:
+    src: 99cumulus_defaults
+    dest: /etc/sysctl.d/99cumulus_defaults.conf
+  notify: reload sysctl files
 
 - name: Copy Cumulus Quagga deb
   copy:

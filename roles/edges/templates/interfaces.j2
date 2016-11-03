@@ -1,98 +1,18 @@
-{% set intvars = interfaces[ansible_hostname] %}
-{% set neighborvars = intvars['neighbors'] %}
-# /etc/network/interfaces template for servers ({{ansible_hostname}})
-# Created by Ansible
-
-auto lo
-iface lo inet loopback
-
-auto lo
-iface lo inet static
-    address {{ intvars.loopback }}/32
-
-{% if intvars.loopback in vxlan.replicators %}
-auto lo:0
-iface lo:0 inet static
-    address {{ vxlan.anycast }}/32
-{% endif %}
-
-
-auto {{ intvars.dhcp.iface }}
-iface {{ intvars.dhcp.iface }} inet dhcp
-
-{% for iface in neighborvars %}
-auto {{ iface }}
-iface {{ iface }} inet manual
-{% endfor %}
-
-{% for vid in intvars.vlans %}
-auto {{intvars.vxlan.iface}}.{{ vid }}
-iface {{intvars.vxlan.iface}}.{{ vid }} inet static
-    address {{ intvars.vlans[vid] }}
-
-{% endfor %}
-
-
-
-
-
-
-
-
-
 ### Configured by Ansible
 ###
 
 auto lo
 iface lo inet loopback
-    address {{variables[ansible_hostname]["interfaces"]["lo"].ipv4}}
+
+auto lo:0
+iface lo:0 inet static
+ address {{variables[ansible_hostname]["interfaces"]["lo"].ipv4}}
 
 auto eth0
 iface eth0 inet dhcp
 
-# uplinks
-auto swp51
-iface swp51
+auto eth1
+iface eth1 inet manual
 
-auto swp52
-iface swp52
-
-# crosslinks
-auto swp49
-iface swp49
- #set bond slave to promisc due to vbox issues
- post-up ip link set promisc on dev swp49
-
-auto swp50
-iface swp50
- #set bond slave to promisc due to vbox issues
- post-up ip link set promisc on dev swp50
-
-# bridge to hosts
-auto swp1
-iface swp1
- bridge-access 1
- mstpctl-portadminedge yes
- mstpctl-bpduguard yes
-
-auto swp2
-iface swp2
- bridge-access 1
- mstpctl-portadminedge yes
- mstpctl-bpduguard yes
-
-auto bond0
-iface bond0
- bond-slaves swp49 swp50
-
-auto br0
-iface br0
- bridge-vlan-aware yes
- bridge-ports swp1 swp2 bond0
- bridge-pvid 1
-
-auto br0.1
-iface br0.1
- address {{variables[ansible_hostname]["interfaces"]["br0"].ipv4}}
- address-virtual 00:00:5e:00:01:01 {{variables[ansible_hostname]["interfaces"]["br0"].gateway}}
-
+auto eth2
+iface eth2 inet manual
