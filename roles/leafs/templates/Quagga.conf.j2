@@ -16,6 +16,7 @@ router bgp {{variables[ansible_hostname]["bgp"].asn}}
  !
  address-family ipv4 unicast
   network {{variables[ansible_hostname]["interfaces"]["lo"].ipv4}}
+  network {{variables[ansible_hostname]["interfaces"]["br0"].ipv4}}
  exit-address-family
 !
 line vty
