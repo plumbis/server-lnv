@@ -1,0 +1,17 @@
+---
+variables:
+  exit01:
+    bgp:
+      asn: 65002
+
+    interfaces:
+      lo:
+        ipv4: "10.0.0.101/32"
+
+  exit02:
+    bgp:
+      asn: 65502
+
+    interfaces:
+      lo:
+        ipv4: "10.0.0.102/32"
