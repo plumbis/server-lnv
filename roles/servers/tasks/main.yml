@@ -1,10 +1,4 @@
 ---
-- name: Apply Quagga daemons
-  copy:
-    src: daemons
-    dest: /etc/quagga/daemons
-  notify: restart quagga
-
 - name: Copy /etc/network/interfaces
   template:
     src: interfaces.j2

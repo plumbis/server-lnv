@@ -16,3 +16,12 @@
   handlers:
     - include: handlers/main.yml
       static: yes
+
+- hosts: servers
+  become: yes
+  roles:
+    - servers
+
+  handlers:
+    - include: handlers/main.yml
+      static: yes
