@@ -5,3 +5,5 @@
     dest: /etc/network/interfaces
   notify: reboot
   ignore_errors: true
+
+- include: vxlan.yml

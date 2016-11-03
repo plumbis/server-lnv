@@ -1,0 +1,9 @@
+
+deb   [arch=amd64]   http://repo3.cumulusnetworks.com/repo CumulusLinux-3 cumulus upstream
+deb-src http://repo3.cumulusnetworks.com/repo CumulusLinux-3 cumulus upstream
+
+deb  [arch=amd64]    http://repo3.cumulusnetworks.com/repo CumulusLinux-3-security-updates cumulus upstream
+deb-src http://repo3.cumulusnetworks.com/repo CumulusLinux-3-security-updates cumulus upstream
+
+deb   [arch=amd64]   http://repo3.cumulusnetworks.com/repo CumulusLinux-3-updates cumulus upstream
+deb-src http://repo3.cumulusnetworks.com/repo CumulusLinux-3-updates cumulus upstream
