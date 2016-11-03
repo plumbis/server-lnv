@@ -17,10 +17,10 @@
     - include: handlers/main.yml
       static: yes
 
-- hosts: servers
+- hosts: exits
   become: yes
   roles:
-    - servers
+    - exits
 
   handlers:
     - include: handlers/main.yml
