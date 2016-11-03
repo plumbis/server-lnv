@@ -15,6 +15,13 @@ iface swp51
 auto swp52
 iface swp52
 
+# crosslinks
+auto swp49
+iface swp49
+
+auto swp50
+iface swp50
+
 # bridge to hosts
 auto swp1
 iface swp1
@@ -22,11 +29,15 @@ iface swp1
 auto swp2
 iface swp2
 
+auto bond0
+iface bond0
+ bond-slaves swp49 swp50
+
 auto br0
 iface br0
  bridge-vlan-aware yes
  address {{variables[ansible_hostname]["interfaces"]["br0"].ipv4}}
- bridge-ports swp1 swp2
+ bridge-ports swp1 swp2 bond0
  bridge-pvid 1
  mstpctl-bpduguard swp1=yes swp2=yes
  address-virtual 00:00:5e:00:01:01 {{variables[ansible_hostname]["interfaces"]["br0"].gateway}}
