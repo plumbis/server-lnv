@@ -37,7 +37,7 @@
 - name: Copy Cumulus Quagga deb
   copy:
     src: roh-ubuntu1604.tar
-    dest: /temp/quagga.tar
+    dest: /tmp/quagga.tar
 
 - name: Untar Quagga package
   unarchive:
