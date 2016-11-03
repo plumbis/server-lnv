@@ -1,21 +1,37 @@
 log file /var/log/quagga/quagga.log
 username cumulus nopassword
 !
+service integrated-vtysh-config
+!
+interface eth0
+ ipv6 nd suppress-ra
+ link-detect
+!
 interface eth1
  ipv6 nd ra-interval 10
- no ipv6 nd suppress-ra
+ link-detect
 !
 interface eth2
  ipv6 nd ra-interval 10
- no ipv6 nd suppress-ra
+ link-detect
 !
-router bgp {{variables[ansible_hostname]["bgp"].asn}}
+interface lo
+ link-detect
+!
+router bgp 64601
  bgp router-id {{variables[ansible_hostname]["interfaces"]["lo"].ipv4|replace("/32", "")}}
- neighbor eth1 interface remote-as external
- neighbor eth2 interface remote-as external
+ neighbor eth1 interface
+ neighbor eth1 remote-as external
+ neighbor eth1 timers 1 3
+ neighbor eth1 timers connect 3
+ neighbor eth1 capability extended-nexthop
+ neighbor eth2 interface
+ neighbor eth2 remote-as external
  !
  address-family ipv4 unicast
   network {{variables[ansible_hostname]["interfaces"]["lo"].ipv4}}
+  neighbor eth1 activate
+  neighbor eth2 activate
  exit-address-family
 !
 line vty
