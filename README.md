@@ -6,7 +6,7 @@ Further this lab shows how an x86 server can be used as a VxLAN Gateway.
 
 This demo is built using the Cumulus [reference topology](https://github.com/CumulusNetworks/cldemo-vagrant). Please visit the reference topology github page for detailed instructions on using Cumulus Vx with Vagrant
 
-![Diagram](cldemo_topology)
+![Diagram](cldemo_topology.png)
 
 Quickstart
 ------------------------
